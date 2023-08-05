@@ -1,0 +1,78 @@
+# Creating Templates
+
+There are two methods to create templates using the extension:
+
+**Using Command Palette:**
+
+- Press `Cmd+Shift+P` (or `Ctrl+Shift+P` on Windows/Linux) to open the command palette.
+- Search for `Templater: Create Template` and select it.
+- Follow the prompts to provide the following information:
+  - Template name
+  - Template description
+  - Default template target directory
+- This will create a new folder inside `.templater` with your template files.
+
+**Using File Explorer Context Menu:**
+
+- Select the files or folders you want to make as template (you can select multiple files & folders)
+- Right-click in the File Explorer.
+- Select `Create Template`.
+- Follow the prompts as described above.
+
+After you create a template, you'll get redirected to a file named `templater.config.json` and folder named `files`.
+all the files inside the `files` folder will be compiled.
+
+## Setup & Configuring Template
+
+You can configuring the template from `templater.config.json` file, there's several config available :
+
+- **title**, this is template name.
+- **description**, this is template description.
+- **type**, tempate type, currently the available type is only `template` so please don't edit this field.
+- **targetDirectory**, this is a relative path of default target when using the template, for example
+  `src/components`, when we use the template from command pallete, it will send `files` to `{{rootPath}}/src/components`
+- **variables**, this is the most important things in template, allowing the template to be dynamic
+  you can use the variables on anywhere (filename, foldername, and filecontent) with syntax `{{VariableName}}`,
+  also there's some utilities that you can use like `{{VariableName.pascalCase}}` etc, [see available utilities](/utilities).
+
+  ```json filename="templater.config.json -> Text Input Variable" {3,4,5,6}
+  {
+    "variables": [
+      {
+        "name": "ObjectName",
+        "description": "Name of the object"
+      },
+      {
+        "name": "ObjectType",
+        "description": "Type of the object",
+        "enums": ["Component", "Service", "Model", "Controller"]
+      }
+    ]
+  }
+  ```
+
+  ```json filename="templater.config.json -> Option Input Variable" {7,8,9,10,11}
+  {
+    "variables": [
+      {
+        "name": "ObjectName",
+        "description": "Name of the object"
+      },
+      {
+        "name": "ObjectType",
+        "description": "Type of the object",
+        "enums": ["Component", "Service", "Model", "Controller"]
+      }
+    ]
+  }
+  ```
+
+- **computedVariables**, this allowing us to simplifying & reusing the same values, variables, and utilities across files.
+  ![ComputedVariable](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb20ydmM0OGRzZ2VqaHNtNHpmYmV6azNyejhmMXIzYnVzYzQ4Ymc0dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3QxWQ0YMa37jePjbNd/giphy.gif)
+
+After we configuring the `templater.config.json`, then it's time to setup the `files`
+you can insert folder, files, and also nested folder - files.
+All the files & folder inside `files` will be compiled, you can use your `variables`
+& `computedVariables` with `{{VariableName}}` (everywhere, on filename and file content).
+both `variables` and `computedVariables` can be used with utilities, and can use multiple utilities at
+the same time (eg, `{{VariableName.pluralCase.pascalCase.snakeCase}}`)

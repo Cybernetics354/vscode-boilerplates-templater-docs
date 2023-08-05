@@ -1,15 +1,13 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
+  "getting-started": "Getting Started",
+  "usage": "Usage",
+  "utilities": "Utilities",
+  "settings": "Settings",
+  "extension": {
+    "title": "Extension ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://marketplace.visualstudio.com/items?itemName=hanifmifta.boilerplatetemplater",
     "newWindow": true
   }
 }
