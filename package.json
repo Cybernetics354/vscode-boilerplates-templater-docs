@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Documentation for Boilerplate Templater",
   "scripts": {
+    "sitemap": "next-sitemap",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && yarn sitemap",
     "start": "next start"
   },
   "repository": {
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@types/node": "18.11.10",
+    "next-sitemap": "^4.1.8",
     "typescript": "^4.9.3"
   }
 }
