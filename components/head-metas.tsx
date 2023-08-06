@@ -63,6 +63,8 @@ const HeadMetas = () => {
       />
 
       <link rel="canonical" href="https://vsctemplater.hanifmifta.dev" />
+
+      <meta name="msvalidate.01" content="07296579AFF24D39EEC0977B58A6C6B2" />
     </>
   );
 };
